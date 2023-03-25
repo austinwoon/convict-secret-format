@@ -1,5 +1,7 @@
 # convict-secret-format
 
+[![Version](https://img.shields.io/npm/v/@austinwoon/convict-secret-format)](https://www.npmjs.com/package/@austinwoon/convict-secret-format)
+
 ## Description
 
 Adds a new validation format for secrets to prevent secrets from being logged in stdout.
