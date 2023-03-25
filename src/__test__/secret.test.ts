@@ -7,15 +7,16 @@ describe("secret configuration tests", () => {
   describe("valid schema tests", () => {
     const DUMMY_SECRET_VALUE = "DUMMY_SECRET_VALUE" as const;
 
+    process.env.SECRET = DUMMY_SECRET_VALUE;
+
     const config = convict({
       secret: {
         env: "SECRET",
-        default: SecretConfig(DUMMY_SECRET_VALUE),
+        default: SecretConfig(""),
         format: "secret-format",
       },
       nestedSecret: {
         nestedSecret2: {
-          env: "SECRET",
           default: SecretConfig(DUMMY_SECRET_VALUE),
           format: "secret-format",
         },
@@ -31,6 +32,8 @@ describe("secret configuration tests", () => {
     });
 
     it("getting secret values should return secret value", () => {
+      expect(config.secret.getValue()).toEqual(DUMMY_SECRET_VALUE);
+
       expect(config.nestedSecret.nestedSecret2.getValue()).toEqual(
         DUMMY_SECRET_VALUE
       );
@@ -40,7 +43,6 @@ describe("secret configuration tests", () => {
   it("secret format validation works if value passed was a random object", () => {
     const config = convict({
       secret: {
-        env: "SECRET",
         default: { val: "test" },
         format: "secret-format",
       },
