@@ -1,16 +1,13 @@
 import { SecretConfigProps } from "./types";
 
-export function SecretConfig(
-  value: string,
-  censorFn: (val: string) => string = (_val) => "REDACTED"
-): SecretConfigProps {
+export function SecretConfig(value: string): SecretConfigProps {
   return {
     toJSON: () => {
-      return censorFn(value);
+      return "REDACTED";
     },
 
     toString: () => {
-      return censorFn(value);
+      return "REDACTED";
     },
 
     getValue: () => {
