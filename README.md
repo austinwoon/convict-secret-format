@@ -6,11 +6,9 @@ Adds a new validation format for secrets to prevent secrets from being logged in
 
 ### Motivations
 
-[node-convict](https://github.com/mozilla/node-convict) currently exposes a property to flag secrets as sensitive by stating `sensitive: true` during initialization. However, this only redacts sensitive information if you were to coerce the `convict` object to a string. Without the coercion, logging the config object will show sensitive information.
+[node-convict](https://github.com/mozilla/node-convict) currently exposes a property to flag secrets as sensitive by stating `sensitive: true` during initialization. However, this only redacts sensitive information if you were to coerce the `convict` object to a string. Logging the the object from the return value of `convict().getProperties()` will output sensitive information.
 
-Furthermore, there is currently no mechanism to redact sensitive information from the return value of `convict().getProperties()`.
-
-This package serves to expose a new format (`secret-format`) and a function constructor `SecretConfig` to mask secrets from stdout.
+This package serves to expose a new format (`secret-format`) and a function constructor `SecretConfig` to mask secrets from stdout when using calling `getProperties()`.
 
 **Example of secret logging leaks**
 
@@ -26,7 +24,6 @@ const config = convict({
 });
 
 // Both of these statements will include `secret-key-value` in logs
-console.log(config);
 console.log(config.getProperties());
 
 // Only when you coerce config to string, will will the value be changed to SENSITIVE
@@ -52,9 +49,8 @@ const config = convict({
   }
 })
 
-// All secrets will be redacted
+// All secrets will output REDACTED
 console.log(config.getProperties())
-console.log(config)
 
 // If you wish to get the value of the secret, call `getValue()`
 console.log(config.getProperties.secret.getValue())
