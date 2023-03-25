@@ -1,10 +1,10 @@
 import type { Format } from "convict";
-import { isSecretConfig } from "./types";
+import { SecretConfigProps, isSecretConfig } from "./types";
 
 export function SecretConfig(
   value: string,
   censorFn: (val: string) => string = (_val) => "REDACTED"
-) {
+): SecretConfigProps {
   return {
     toJSON: () => {
       return censorFn(value);
@@ -14,7 +14,7 @@ export function SecretConfig(
       return censorFn(value);
     },
 
-    getSecretValue: () => {
+    getValue: () => {
       return value;
     },
   };

@@ -31,7 +31,7 @@ describe("secret configuration tests", () => {
     });
 
     it("getting secret values should return secret value", () => {
-      expect(config.nestedSecret.nestedSecret2.getSecretValue()).toEqual(
+      expect(config.nestedSecret.nestedSecret2.getValue()).toEqual(
         DUMMY_SECRET_VALUE
       );
     });
