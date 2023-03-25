@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/austinwoon/convict-secret-format.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "convict",
     "secrets",
