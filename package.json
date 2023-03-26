@@ -1,6 +1,6 @@
 {
   "name": "@austinwoon/convict-secret-format",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Secret configuration format for convict configs",
   "main": "dist/index.js",
   "scripts": {

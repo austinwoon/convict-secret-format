@@ -13,3 +13,10 @@ export const isSecretConfig = (val: unknown): val is SecretConfigProps => {
     coercedVal.toString !== undefined
   );
 };
+
+export type CensorFunction = (val: string) => string;
+
+export type SecretFormatOptions = {
+  censorFn?: CensorFunction;
+  formatName?: string;
+};
