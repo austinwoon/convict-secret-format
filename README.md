@@ -55,7 +55,7 @@ const config = convict({
 console.log(config.getProperties())
 
 // If you wish to get the value of the secret, call `getValue()`
-console.log(config.getProperties.secret.getValue())
+console.log(config.getProperties().secret.getValue())
 ```
 
 ### Validation
@@ -99,7 +99,9 @@ const config = convict({
     default: SecretConfig(""),
     format: "secret-format-2",
   },
-});
+})
+  .validate()
+  .getProperties();
 
 // this will now output `censored`, instead of `REDACTED`
 console.log(config.secret);
