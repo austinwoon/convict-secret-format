@@ -1,3 +1,3 @@
 export * from "./SecretConfig";
-export * from "./SecretConfigFormat";
+export * from "./format";
 export type { SecretConfigProps } from "./types";
