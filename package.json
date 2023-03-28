@@ -1,6 +1,6 @@
 {
   "name": "@austinwoon/convict-secret-format",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Secret configuration format for convict configs",
   "main": "dist/index.js",
   "scripts": {
@@ -19,13 +19,17 @@
     "convict",
     "secrets",
     "convict-secrets",
-    "convict-formats"
+    "convict-formats",
+    "convict-format"
   ],
   "author": {
     "name": "Austin Woon",
     "email": "austinwoonquanyi@gmail.com",
     "url": "https://austinwoon.dev"
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/austinwoon/convict-secret-format/issues"
